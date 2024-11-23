@@ -1,0 +1,171 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Withdrawal Settings</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="mb-4 text-primary fw-bold">Withdrawal Settings</h2>
+        
+        <div class="card shadow-lg border-0 rounded-3">
+            <div class="card-body p-4">
+                <form id="withdrawalSettingsForm" class="needs-validation" novalidate>
+                    <!-- Payment Method Selection -->
+                    <div class="mb-4">
+                        <label class="form-label fw-semibold">Preferred Payment Method</label>
+                        <select class="form-select form-select-lg" id="paymentMethod" required>
+                            <option value="">Select payment method</option>
+                            <option value="bank">Bank Transfer</option>
+                            <option value="paypal">PayPal</option>
+                            <option value="crypto">Cryptocurrency</option>
+                        </select>
+                    </div>
+
+                    <!-- Bank Details Section -->
+                    <div id="bankDetails" class="payment-details rounded-3 p-3 bg-light" style="display: none;">
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Bank Name</label>
+                            <input type="text" class="form-control form-control-lg" id="bankName">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Account Number</label>
+                            <input type="text" class="form-control form-control-lg" id="accountNumber">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">SWIFT/BIC Code</label>
+                            <input type="text" class="form-control form-control-lg" id="swiftCode">
+                        </div>
+                    </div>
+
+                    <!-- PayPal Details Section -->
+                    <div id="paypalDetails" class="payment-details rounded-3 p-3 bg-light" style="display: none;">
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">PayPal Email</label>
+                            <input type="email" class="form-control form-control-lg" id="paypalEmail">
+                        </div>
+                    </div>
+
+                    <!-- Crypto Details Section -->
+                    <div id="cryptoDetails" class="payment-details rounded-3 p-3 bg-light" style="display: none;">
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Cryptocurrency Type</label>
+                            <select class="form-select form-select-lg" id="cryptoType">
+                                <option value="btc">Bitcoin (BTC)</option>
+                                <option value="eth">Ethereum (ETH)</option>
+                                <option value="usdt">Tether (USDT)</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Wallet Address</label>
+                            <input type="text" class="form-control form-control-lg" id="walletAddress">
+                        </div>
+                    </div>
+
+                    <!-- Withdrawal Limits -->
+                    <div class="row g-4 mt-2">
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">Minimum Withdrawal Amount</label>
+                            <div class="input-group">
+                                <span class="input-group-text">$</span>
+                                <input type="number" class="form-control form-control-lg" id="minWithdrawal" value="50" readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">Maximum Withdrawal Amount</label>
+                            <div class="input-group">
+                                <span class="input-group-text">$</span>
+                                <input type="number" class="form-control form-control-lg" id="maxWithdrawal" value="10000" readonly>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Security Settings -->
+                    <div class="mb-4 mt-4">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="twoFactorAuth" role="switch">
+                            <label class="form-check-label fw-semibold" for="twoFactorAuth">
+                                Enable 2FA for withdrawals
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-lg w-100">Save Settings</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const paymentMethod = document.getElementById('paymentMethod');
+            const paymentDetails = document.querySelectorAll('.payment-details');
+            const withdrawalForm = document.getElementById('withdrawalSettingsForm');
+
+            // Handle payment method change with animation
+            paymentMethod.addEventListener('change', function() {
+                paymentDetails.forEach(detail => {
+                    detail.style.opacity = '0';
+                    detail.style.display = 'none';
+                });
+                
+                const selectedMethod = this.value;
+                if (selectedMethod) {
+                    const selectedDetail = document.getElementById(`${selectedMethod}Details`);
+                    selectedDetail.style.display = 'block';
+                    setTimeout(() => {
+                        selectedDetail.style.opacity = '1';
+                    }, 50);
+                }
+            });
+
+            // Add smooth transitions
+            paymentDetails.forEach(detail => {
+                detail.style.transition = 'opacity 0.3s ease-in-out';
+            });
+
+            // Handle form submission
+            withdrawalForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const selectedMethod = paymentMethod.value;
+                let withdrawalSettings = {
+                    paymentMethod: selectedMethod,
+                    twoFactorAuth: document.getElementById('twoFactorAuth').checked
+                };
+
+                // Collect method-specific details
+                switch(selectedMethod) {
+                    case 'bank':
+                        withdrawalSettings.bankDetails = {
+                            bankName: document.getElementById('bankName').value,
+                            accountNumber: document.getElementById('accountNumber').value,
+                            swiftCode: document.getElementById('swiftCode').value
+                        };
+                        break;
+                    case 'paypal':
+                        withdrawalSettings.paypalDetails = {
+                            email: document.getElementById('paypalEmail').value
+                        };
+                        break;
+                    case 'crypto':
+                        withdrawalSettings.cryptoDetails = {
+                            cryptoType: document.getElementById('cryptoType').value,
+                            walletAddress: document.getElementById('walletAddress').value
+                        };
+                        break;
+                }
+
+                // Save settings to backend (mock API call)
+                console.log('Saving withdrawal settings:', withdrawalSettings);
+                alert('Withdrawal settings saved successfully!');
+            });
+        });
+    </script>
+</body>
+</html>

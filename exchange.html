@@ -1,0 +1,53 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Currency Exchange</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+      </head>
+
+      <body class="bg-gray-100 p-5 min-h-screen flex items-center sm:p-2.5">
+          <div class="container">
+              <div class="max-w-[600px] w-[95%] mx-auto my-5 p-8 bg-white rounded-2xl shadow-lg transform transition-transform duration-300 hover:-translate-y-1.5 sm:p-5 sm:my-2.5">
+                  <h2 class="text-center mb-4 text-gray-900 font-semibold">Currency Exchange Calculator</h2>
+                  <form id="exchangeForm">
+                      <div class="mb-3">
+                          <label for="amount" class="block mb-2">Amount</label>
+                          <input type="number" class="w-full p-2.5 border rounded focus:ring-2 focus:ring-blue-100 focus:border-blue-500 outline-none" id="amount" required min="0" step="0.01">
+                      </div>
+                      <div class="mb-3">
+                          <label for="fromCurrency" class="block mb-2">From Currency</label>
+                          <select class="w-full p-2.5 border rounded focus:ring-2 focus:ring-blue-100 focus:border-blue-500 outline-none" id="fromCurrency" required>
+                              <option value="USD">US Dollar (USD)</option>
+                              <option value="EUR">Euro (EUR)</option>
+                              <option value="GBP">British Pound (GBP)</option>
+                              <option value="JPY">Japanese Yen (JPY)</option>
+                              <option value="AUD">Australian Dollar (AUD)</option>
+                              <option value="CAD">Canadian Dollar (CAD)</option>
+                              <option value="NGN">Nigerian Naira (NGN)</option>
+                          </select>
+                      </div>
+                      <div class="mb-3">
+                          <label for="toCurrency" class="block mb-2">To Currency</label>
+                          <select class="w-full p-2.5 border rounded focus:ring-2 focus:ring-blue-100 focus:border-blue-500 outline-none" id="toCurrency" required>
+                              <option value="EUR">Euro (EUR)</option>
+                              <option value="USD">US Dollar (USD)</option>
+                              <option value="GBP">British Pound (GBP)</option>
+                              <option value="JPY">Japanese Yen (JPY)</option>
+                              <option value="AUD">Australian Dollar (AUD)</option>
+                              <option value="CAD">Canadian Dollar (CAD)</option>
+                              <option value="NGN">Nigerian Naira (NGN)</option>
+                          </select>
+                      </div>
+                      <button type="submit" class="w-full py-3 px-4 bg-blue-600 text-white font-medium uppercase tracking-wider rounded transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-blue-300">Convert</button>
+                  </form>
+                  <div class="mt-6 p-5 bg-gray-50 rounded-lg hidden transition-all duration-300" id="result">
+                      <h4 class="text-center">Conversion Result</h4>
+                      <p class="text-center mb-0" id="conversionResult"></p>
+                  </div>
+              </div>
+          </div>
+      <script src="./exchnage.js"></script>
+  </body> 
+   </html>
