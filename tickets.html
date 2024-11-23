@@ -9,12 +9,12 @@
 </head>
 <body>
     <main>
-        <section class="tickets-container">
-            <h1 class="section-title">Purchase Tickets</h1>
-            <form id="ticketForm" onsubmit="return validateForm()" class="ticket-form">
-                <div class="ticket-type form-group">
-                    <h2>Select Ticket Type</h2>
-                    <select name="ticketType" id="ticketType" required class="form-control">
+        <section class="max-w-[800px] mx-auto my-8 p-8 bg-white rounded-[20px] shadow-lg transform transition-transform hover:-translate-y-1">
+            <h1 class="text-center text-[#2c3e50] mb-8 text-4xl font-bold uppercase tracking-[2px]">Purchase Tickets</h1>
+            <form id="ticketForm" onsubmit="return validateForm()" class="space-y-8">
+                <div class="mb-8">
+                    <h2 class="text-[#2c3e50] mb-4 text-2xl">Select Ticket Type</h2>
+                    <select name="ticketType" id="ticketType" required class="w-full p-4 mb-4 border-2 border-gray-200 rounded-lg text-base transition-all duration-300 focus:border-blue-500 focus:shadow-lg focus:outline-none focus:-translate-y-0.5 bg-gray-50">
                         <option value="">Choose a ticket type</option>
                         <option value="general">General Admission - $50</option>
                         <option value="vip">VIP Pass - $150</option>
@@ -22,227 +22,41 @@
                     </select>
                 </div>
 
-                <div class="ticket-quantity form-group">
-                    <h2>Number of Tickets</h2>
-                    <input type="number" id="quantity" name="quantity" min="1" max="10" required class="form-control">
+                <div class="mb-8">
+                    <h2 class="text-[#2c3e50] mb-4 text-2xl">Number of Tickets</h2>
+                    <input type="number" id="quantity" name="quantity" min="1" max="10" required class="w-full p-4 mb-4 border-2 border-gray-200 rounded-lg text-base transition-all duration-300 focus:border-blue-500 focus:shadow-lg focus:outline-none focus:-translate-y-0.5 bg-gray-50">
                 </div>
 
-                <div class="personal-info form-group">
-                    <h2>Personal Information</h2>
-                    <input type="text" id="name" name="name" placeholder="Full Name" required class="form-control">
-                    <input type="email" id="email" name="email" placeholder="Email Address" required class="form-control">
-                    <input type="tel" id="phone" name="phone" placeholder="Phone Number" required class="form-control">
+                <div class="mb-8">
+                    <h2 class="text-[#2c3e50] mb-4 text-2xl">Personal Information</h2>
+                    <input type="text" id="name" name="name" placeholder="Full Name" required class="w-full p-4 mb-4 border-2 border-gray-200 rounded-lg text-base transition-all duration-300 focus:border-blue-500 focus:shadow-lg focus:outline-none focus:-translate-y-0.5 bg-gray-50">
+                    <input type="email" id="email" name="email" placeholder="Email Address" required class="w-full p-4 mb-4 border-2 border-gray-200 rounded-lg text-base transition-all duration-300 focus:border-blue-500 focus:shadow-lg focus:outline-none focus:-translate-y-0.5 bg-gray-50">
+                    <input type="tel" id="phone" name="phone" placeholder="Phone Number" required class="w-full p-4 mb-4 border-2 border-gray-200 rounded-lg text-base transition-all duration-300 focus:border-blue-500 focus:shadow-lg focus:outline-none focus:-translate-y-0.5 bg-gray-50">
                 </div>
 
-                <div class="payment-info form-group">
-                    <h2>Payment Information</h2>
-                    <input type="text" id="cardName" name="cardName" placeholder="Name on Card" required class="form-control">
-                    <input type="text" id="cardNumber" name="cardNumber" placeholder="Card Number" required class="form-control">
-                    <div class="card-details">
-                        <input type="text" id="expiry" name="expiry" placeholder="MM/YY" required class="form-control">
-                        <input type="text" id="cvv" name="cvv" placeholder="CVV" required class="form-control">
+                <div class="mb-8">
+                    <h2 class="text-[#2c3e50] mb-4 text-2xl">Payment Information</h2>
+                    <input type="text" id="cardName" name="cardName" placeholder="Name on Card" required class="w-full p-4 mb-4 border-2 border-gray-200 rounded-lg text-base transition-all duration-300 focus:border-blue-500 focus:shadow-lg focus:outline-none focus:-translate-y-0.5 bg-gray-50">
+                    <input type="text" id="cardNumber" name="cardNumber" placeholder="Card Number" required class="w-full p-4 mb-4 border-2 border-gray-200 rounded-lg text-base transition-all duration-300 focus:border-blue-500 focus:shadow-lg focus:outline-none focus:-translate-y-0.5 bg-gray-50">
+                    <div class="grid grid-cols-2 gap-4">
+                        <input type="text" id="expiry" name="expiry" placeholder="MM/YY" required class="w-full p-4 border-2 border-gray-200 rounded-lg text-base transition-all duration-300 focus:border-blue-500 focus:shadow-lg focus:outline-none focus:-translate-y-0.5 bg-gray-50">
+                        <input type="text" id="cvv" name="cvv" placeholder="CVV" required class="w-full p-4 border-2 border-gray-200 rounded-lg text-base transition-all duration-300 focus:border-blue-500 focus:shadow-lg focus:outline-none focus:-translate-y-0.5 bg-gray-50">
                     </div>
                 </div>
 
-                <div class="total-price">
+                <div class="text-center text-xl my-8 p-4 bg-gray-50 rounded-lg text-[#2c3e50]">
                     <h2>Total: $<span id="totalAmount">0</span></h2>
                 </div>
 
-                <button type="submit" class="purchase-btn">Purchase Tickets</button>
+                <button type="submit" class="w-full py-5 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-lg text-lg font-bold cursor-pointer transition-all duration-300 hover:from-green-600 hover:to-green-500 hover:-translate-y-0.5 hover:shadow-lg uppercase tracking-wider">Purchase Tickets</button>
             </form>
         </section>
     </main>
 
-    <footer>
+    <footer class="bg-gradient-to-r from-[#2c3e50] to-[#3498db] text-white text-center py-6 relative bottom-0 w-full shadow-[0_-2px_10px_rgba(0,0,0,0.1)]">
         <p>© 2024 Concert Venue. All rights reserved.</p>
     </footer>
-
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            min-height: 100vh;
-        }
-
-        header {
-            background: linear-gradient(to right, #2c3e50, #3498db);
-            padding: 1rem;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        nav ul li {
-            margin: 0 1rem;
-        }
-
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-        }
-
-        nav ul li a:hover {
-            color: #ffd700;
-            background: rgba(255,255,255,0.1);
-        }
-
-        .tickets-container {
-            max-width: 800px;
-            margin: 2rem auto;
-            padding: 2rem;
-            background-color: white;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .tickets-container:hover {
-            transform: translateY(-5px);
-        }
-
-        .section-title {
-            text-align: center;
-            color: #2c3e50;
-            margin-bottom: 2rem;
-            font-size: 2.5rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .form-group {
-            margin-bottom: 2rem;
-            transition: all 0.3s ease;
-        }
-
-        .form-group h2 {
-            color: #2c3e50;
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 1rem;
-            margin-bottom: 1rem;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            background-color: #f8f9fa;
-        }
-
-        .form-control:focus {
-            border-color: #3498db;
-            box-shadow: 0 0 10px rgba(52,152,219,0.1);
-            outline: none;
-            transform: translateY(-2px);
-        }
-
-        .card-details {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-
-        .purchase-btn {
-            width: 100%;
-            padding: 1.2rem;
-            background: linear-gradient(to right, #4CAF50, #45a049);
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .purchase-btn:hover {
-            background: linear-gradient(to right, #45a049, #4CAF50);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(76,175,80,0.3);
-        }
-
-        .total-price {
-            text-align: center;
-            font-size: 1.4rem;
-            margin: 2rem 0;
-            padding: 1rem;
-            background-color: #f8f9fa;
-            border-radius: 10px;
-            color: #2c3e50;
-        }
-
-        footer {
-            background: linear-gradient(to right, #2c3e50, #3498db);
-            color: white;
-            text-align: center;
-            padding: 1.5rem;
-            position: relative;
-            bottom: 0;
-            width: 100%;
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
-        }
-
-        @media (max-width: 768px) {
-            .tickets-container {
-                margin: 1rem;
-                padding: 1.5rem;
-            }
-
-            .card-details {
-                grid-template-columns: 1fr;
-            }
-
-            nav ul li {
-                margin: 0.5rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .form-control {
-                font-size: 0.9rem;
-                padding: 0.8rem;
-            }
-
-            .section-title {
-                font-size: 1.8rem;
-            }
-
-            h2 {
-                font-size: 1.2rem;
-            }
-
-            .purchase-btn {
-                padding: 1rem;
-                font-size: 1.1rem;
-            }
-        }
-    </style>
+</body>
 
     <script>
         function calculateTotal() {
