@@ -44,3 +44,43 @@
     
 </body>
 </html>
+
+
+
+ <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar-menu');
+            const pageWrapper = document.querySelector('.page-wrapper');
+            
+            // Toggle sidebar visibility and page content shift
+            sidebar.classList.toggle('translate-x-[-100%]');
+            pageWrapper.classList.toggle('toggled');
+            
+            // Optional: Add overlay to close sidebar when clicking outside
+            if (!document.getElementById('sidebar-overlay')) {
+                const overlay = document.createElement('div');
+                overlay.id = 'sidebar-overlay';
+                overlay.classList.add('fixed', 'inset-0', 'bg-black', 'bg-opacity-50', 'z-40', 'lg:hidden');
+                overlay.addEventListener('click', toggleSidebar);
+                document.body.appendChild(overlay);
+            } else {
+                const overlay = document.getElementById('sidebar-overlay');
+                overlay.remove();
+            }
+        }
+        
+        // Ensure sidebar is hidden on larger screens
+        window.addEventListener('resize', () => {
+            const sidebar = document.getElementById('sidebar-menu');
+            const pageWrapper = document.querySelector('.page-wrapper');
+            
+            if (window.innerWidth >= 1024) {
+                sidebar.classList.remove('translate-x-[-100%]');
+                pageWrapper.classList.remove('toggled');
+                
+                // Remove overlay if exists
+                const overlay = document.getElementById('sidebar-overlay');
+                if (overlay) overlay.remove();
+            }
+        });
+       </script>

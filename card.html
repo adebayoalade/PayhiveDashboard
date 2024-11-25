@@ -187,8 +187,8 @@
                     </div>
                 </div>
 
-                <div class="container-fluid px-3 py-6">
-                    <div class="max-w-2xl mx-auto mt-10">
+                <div class="container-fluid px-3 py-12">
+                    <div class="max-w-2xl mx-auto mt-10 h-screen">
                         <div class="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1">
                             <h2 class="text-2xl font-bold text-gray-800 dark:text-white text-center mb-6">Payment Details</h2>
                             <form id="payment-form" class="space-y-6">
@@ -258,6 +258,36 @@
      
 
         <!-- JAVASCRIPTS -->
+        <script>
+            function toggleSidebar() {
+                const sidebar = document.getElementById('sidebar');
+                const pageWrapper = document.querySelector('.page-wrapper');
+                
+                // Toggle sidebar visibility
+                sidebar.classList.toggle('-translate-x-full');
+                pageWrapper.classList.toggle('toggled');
+                
+                // Add/remove overlay
+                const existingOverlay = document.getElementById('sidebar-overlay');
+                if (existingOverlay) {
+                    existingOverlay.remove();
+                } else {
+                    const overlay = document.createElement('div');
+                    overlay.id = 'sidebar-overlay';
+                    overlay.classList.add('fixed', 'inset-0', 'bg-black', 'bg-opacity-50', 'z-40', 'lg:hidden');
+                    overlay.addEventListener('click', toggleSidebar);
+                    document.body.appendChild(overlay);
+                }
+            }
+            
+            // Responsive sidebar handling
+            window.addEventListener('resize', () => {
+                const sidebar = document.getElementById('sidebar');
+                const pageWrapper = document.querySelector('.page-wrapper');
+                
+               
+            });
+        </script>
         <script src="https://js.stripe.com/v3/"></script>
         <script src="./card.js"></script>
         <script src="assets/libs/apexcharts/apexcharts.min.js"></script>
