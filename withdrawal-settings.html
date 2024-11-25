@@ -1,171 +1,317 @@
-
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Withdrawal Settings</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-    <div class="container mt-5">
-        <h2 class="mb-4 text-primary fw-bold">Withdrawal Settings</h2>
+<html lang="en" class="light scroll-smooth" dir="ltr">
+    <head>
+        <meta charset="UTF-8">
+        <title>Withdraw Settings</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="Cross-Border Payments Solution">
+        <meta name="keywords" content="payhive, cross-border payments, multicurrency wallets, financial inclusion, money transfer, send money, receive money">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <!-- favicon -->
+        <link rel="shortcut icon" href="assets/images/favicon.ico">
+
+        <!-- Css -->
+        <link href="assets/libs/jsvectormap/css/jsvectormap.min.css" rel="stylesheet">
+        <!-- Main Css -->
+        <link href="assets/libs/simplebar/simplebar.min.css" rel="stylesheet">
+        <link href="assets/libs/@iconscout/unicons/css/line.css" type="text/css" rel="stylesheet">
+        <link href="assets/libs/@mdi/font/css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="assets/css/tailwind.css">
+
+    </head>
+    
+    <body class="font-nunito text-base text-black dark:text-white dark:bg-slate-900">
+       
+        <div class="page-wrapper toggled">
+            <!-- sidebar-wrapper -->
+            <nav id="sidebar" class="sidebar-wrapper">
+                <div class="sidebar-content">
+                    <div class="sidebar-brand">
+                        <a href="index.html">
+                            <img src="assets/images/logo-dark.png" height="24" class="block dark:hidden" alt="">
+                            <img src="assets/images/logo-light.png" height="24" class="hidden dark:block" alt="">
+                        </a>
+                    </div>
         
-        <div class="card shadow-lg border-0 rounded-3">
-            <div class="card-body p-4">
-                <form id="withdrawalSettingsForm" class="needs-validation" novalidate>
-                    <!-- Payment Method Selection -->
-                    <div class="mb-4">
-                        <label class="form-label fw-semibold">Preferred Payment Method</label>
-                        <select class="form-select form-select-lg" id="paymentMethod" required>
-                            <option value="">Select payment method</option>
-                            <option value="bank">Bank Transfer</option>
-                            <option value="paypal">PayPal</option>
-                            <option value="crypto">Cryptocurrency</option>
-                        </select>
-                    </div>
+                    <ul class="sidebar-menu border-t dark:border-white/10 border-gray-100" data-simplebar style="height: calc(100% - 70px);">
+                        <li class=""><h6>Overview</h6></li>
+                        <li class="">
+                            <a href="./index.html"><i class="uil uil-home me-2"></i>Home</a>
+                        </li>
+                        <li class="">
+                            <a href="./card.html"><i class="uil uil-card-atm me-2"></i>Cards</a>
+                        </li>
+                        <li class="">
+                            <a href="./wallet.html"><i class="uil uil-wallet me-2"></i>Wallets</a>
+                        </li>
 
-                    <!-- Bank Details Section -->
-                    <div id="bankDetails" class="payment-details rounded-3 p-3 bg-light" style="display: none;">
-                        <div class="mb-3">
-                            <label class="form-label fw-semibold">Bank Name</label>
-                            <input type="text" class="form-control form-control-lg" id="bankName">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label fw-semibold">Account Number</label>
-                            <input type="text" class="form-control form-control-lg" id="accountNumber">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label fw-semibold">SWIFT/BIC Code</label>
-                            <input type="text" class="form-control form-control-lg" id="swiftCode">
-                        </div>
-                    </div>
+                        <li class=""><h6>Transactions</h6></li>
+                        <li class="">
+                            <a href="./deposit.html"><i class="uil uil-money-withdraw me-2"></i>Deposit Funds</a>
+                        </li>
+                        <li class="">
+                            <a href="./send.html"><i class="uil uil-telegram-alt me-2"></i>Send Funds</a>
+                        </li>
+                        <li class="">
+                            <a href="./exchange.html"><i class="uil uil-sync me-2"></i>Exchange Funds</a>
+                        </li>
+                        <li class="">
+                            <a href="./withdraw.html"><i class="uil uil-money-insert me-2"></i>Withdraw Funds</a>
+                        </li>
+                        <li class="">
+                            <a href="./request.html"><i class="uil uil-question-circle me-2"></i>Request Funds</a>
+                        </li>
+                        <li class="">
+                            <a href="./transactions.html"><i class="uil uil-receipt-alt me-2"></i>Transaction History</a>
+                        </li>
 
-                    <!-- PayPal Details Section -->
-                    <div id="paypalDetails" class="payment-details rounded-3 p-3 bg-light" style="display: none;">
-                        <div class="mb-3">
-                            <label class="form-label fw-semibold">PayPal Email</label>
-                            <input type="email" class="form-control form-control-lg" id="paypalEmail">
-                        </div>
-                    </div>
+                        <li class=""><h6>Support</h6></li>
+                        <li class="">
+                            <a href="./tickets.html"><i class="uil uil-ticket me-2"></i>Tickets</a>
+                        </li>
+                        <li class="">
+                            <a href="./notifications.html"><i class="uil uil-bell me-2"></i>Notifications</a>
+                        </li>
 
-                    <!-- Crypto Details Section -->
-                    <div id="cryptoDetails" class="payment-details rounded-3 p-3 bg-light" style="display: none;">
-                        <div class="mb-3">
-                            <label class="form-label fw-semibold">Cryptocurrency Type</label>
-                            <select class="form-select form-select-lg" id="cryptoType">
-                                <option value="btc">Bitcoin (BTC)</option>
-                                <option value="eth">Ethereum (ETH)</option>
-                                <option value="usdt">Tether (USDT)</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label fw-semibold">Wallet Address</label>
-                            <input type="text" class="form-control form-control-lg" id="walletAddress">
-                        </div>
-                    </div>
+                        <li class=""><h6>Account</h6></li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0)"><i class="uil uil-cog me-2"></i>Preferences</a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li><a href="./withdrawal-settings.html">Withdrawal Settings</a></li>
+                                    <li><a href="./profile-settings.html">Profile Settings</a></li>
+                                    <li><a href="./security.html">Security Center</a></li>
+                                    <li><a href="#">API Keys & Webhook</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="">
+                            <a href="./compliance.html"><i class="uil uil-user-check me-2"></i>Compliance</a>
+                        </li>
+                    </ul>
+                    <!-- sidebar-menu  -->
+                </div>
+            </nav>
+            <!-- sidebar-wrapper  -->
 
-                    <!-- Withdrawal Limits -->
-                    <div class="row g-4 mt-2">
-                        <div class="col-md-6">
-                            <label class="form-label fw-semibold">Minimum Withdrawal Amount</label>
-                            <div class="input-group">
-                                <span class="input-group-text">$</span>
-                                <input type="number" class="form-control form-control-lg" id="minWithdrawal" value="50" readonly>
+            <!-- Start Page Content -->
+            <main class="page-content bg-gray-50 dark:bg-slate-800">
+                <!-- Top Header -->
+                <div class="top-header">
+                    <div class="header-bar flex justify-between">
+                        <div class="flex items-center space-x-1">
+                            <!-- Logo -->
+                            <a href="#" class="xl:hidden block me-2">
+                                <img src="assets/images/logo-icon-32.png" class="md:hidden block" alt="">
+                                <span class="md:block hidden">
+                                    <img src="assets/images/logo-dark.png" class="inline-block dark:hidden" alt="">
+                                    <img src="assets/images/logo-light.png" class="hidden dark:inline-block" alt="">
+                                </span>
+                            </a>
+                            <!-- Logo -->
+
+                            <!-- show or close sidebar -->
+                            <button id="close-sidebar" class="h-8 w-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-[20px] text-center bg-gray-50 dark:bg-slate-800 hover:bg-gray-100 dark:hover:bg-slate-700 border border-gray-100 dark:border-gray-800 text-slate-900 dark:text-white rounded-full">
+                                <i data-feather="menu" class="h-4 w-4"></i>
+                            </button>
+                            <!-- show or close sidebar -->
+                        </div>
+
+                        <ul class="list-none mb-0 flex items-center space-x-1">
+                            <!-- Notification Dropdown -->
+                            <li class="dropdown inline-block relative">
+                                <button onclick="toggleDropdown(this)" class="dropdown-toggle h-8 w-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-[20px] text-center bg-gray-50 dark:bg-slate-800 hover:bg-gray-100 dark:hover:bg-slate-700 border border-gray-100 dark:border-gray-800 text-slate-900 dark:text-white rounded-full" type="button">
+                                    <i data-feather="bell" class="h-4 w-4"></i>
+                                    <span class="absolute top-0 end-0 flex items-center justify-center bg-red-600 text-white text-[10px] font-bold rounded-full size-2 after:content-[''] after:absolute after:h-2 after:w-2 after:bg-red-600 after:top-0 after:end-0 after:rounded-full after:animate-ping"></span>
+                                </button>
+                                <!-- Dropdown menu -->
+                                <div class="dropdown-menu absolute end-0 m-0 mt-4 z-10 w-64 rounded-md overflow-hidden bg-white dark:bg-slate-900 shadow dark:shadow-gray-700 hidden">
+                                    <span class="px-4 py-4 flex justify-between">
+                                        <span class="font-semibold">Notifications</span>
+                                        <span class="flex items-center justify-center bg-red-600/20 text-red-600 text-[10px] font-bold rounded-full w-5 max-h-5 ms-1">3</span>
+                                    </span>
+                                    <ul class="py-2 text-start h-64 border-t border-gray-100 dark:border-gray-800 overflow-y-auto" data-simplebar>
+                                        <li>
+                                            <a href="#!" class="block font-medium py-1.5 px-4 hover:bg-gray-50 dark:hover:bg-slate-800 transition-all duration-300">
+                                                <div class="flex items-center">
+                                                    <div class="h-10 w-10 rounded-md shadow shadow-indigo-600/10 dark:shadow-gray-700 bg-indigo-600/10 dark:bg-slate-800 text-indigo-600 dark:text-white flex items-center justify-center">
+                                                        <i data-feather="shopping-cart" class="h-4 w-4"></i>
+                                                    </div>
+                                                    <div class="ms-2">
+                                                        <span class="text-[15px] font-semibold block">Order Complete</span>
+                                                        <small class="text-slate-400">15 min ago</small>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#!" class="block font-medium py-1.5 px-4 hover:bg-gray-50 dark:hover:bg-slate-800 transition-all duration-300">
+                                                <div class="flex items-center">
+                                                    <div class="h-10 w-10 rounded-md shadow shadow-indigo-600/10 dark:shadow-gray-700 bg-indigo-600/10 dark:bg-slate-800 text-indigo-600 dark:text-white flex items-center justify-center">
+                                                        <i data-feather="truck" class="h-4 w-4"></i>
+                                                    </div>
+                                                    <div class="ms-2">
+                                                        <span class="text-[15px] font-semibold block">Delivered your Order</span>
+                                                        <small class="text-slate-400">Yesterday</small>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li><!--end dropdown-->
+                            <!-- Notification Dropdown -->
+            
+                            <!-- User/Profile Dropdown -->
+                            <li class="dropdown inline-block relative">
+                                <button onclick="toggleDropdown(this)" class="dropdown-toggle flex items-center" type="button">
+                                    <span class="h-8 w-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-[20px] text-center bg-gray-50 dark:bg-slate-800 hover:bg-gray-100 dark:hover:bg-slate-700 border border-gray-100 dark:border-gray-800 text-slate-900 dark:text-white rounded-full"><img src="assets/images/client/01.jpg" class="rounded-full" alt=""></span>
+                                    <span class="font-semibold text-[16px] ms-1 sm:inline-block hidden">John Doe</span>
+                                </button>
+                                <!-- Dropdown menu -->
+                                <div class="dropdown-menu absolute end-0 m-0 mt-4 z-10 w-44 rounded-md overflow-hidden bg-white dark:bg-slate-900 shadow dark:shadow-gray-700 hidden">
+                                    <ul class="py-2 text-start">
+                                        <li>
+                                            <a href="#" class="block font-medium py-1 px-4 dark:text-white/70 hover:text-indigo-600 dark:hover:text-white"><i class="uil uil-user me-2"></i>Profile</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="block font-medium py-1 px-4 dark:text-white/70 hover:text-indigo-600 dark:hover:text-white"><i class="uil uil-setting me-2"></i>Settings</a>
+                                        </li>
+                                        <li class="border-t border-gray-100 dark:border-gray-800 my-2"></li>
+                                        <li>
+                                            <a href="#" class="block font-medium py-1 px-4 dark:text-white/70 hover:text-indigo-600 dark:hover:text-white"><i class="uil uil-sign-out-alt me-2"></i>Logout</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li><!--end dropdown-->
+                            <!-- User/Profile Dropdown -->
+                        </ul>
+                    </div>
+                </div>
+                <!-- Top Header -->
+
+                <div class="container-fluid relative px-3 py-12">
+                    <div class="container mx-auto mt-20 mt-10 h-screen">
+                        <h2 class="mb-6 text-3xl text-primary font-bold tracking-tight">Withdrawal Settings</h2>
+                        
+                        <div class="bg-white dark:bg-slate-900 rounded-xl shadow-lg border-0 transition-all duration-300 hover:shadow-xl">
+                            <div class="p-6">
+                                <form id="withdrawalSettingsForm" class="needs-validation space-y-4" novalidate>
+                                    <!-- Payment Method Selection -->
+                                    <div class="mb-4">
+                                        <label class="block font-semibold mb-2 text-gray-700 dark:text-gray-300">Preferred Payment Method</label>
+                                        <select class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300" id="paymentMethod" required>
+                                            <option value="">Select payment method</option>
+                                            <option value="bank">Bank Transfer</option>
+                                            <option value="paypal">PayPal</option>
+                                            <option value="crypto">Cryptocurrency</option>
+                                        </select>
+                                    </div>
+                
+                                    <!-- Bank Details Section -->
+                                    <div id="bankDetails" class="hidden bg-gray-50 dark:bg-slate-800 rounded-lg p-4 space-y-4 transform transition-all duration-300">
+                                        <div class="mb-3">
+                                            <label class="block font-semibold mb-2 text-gray-700 dark:text-gray-300">Bank Name</label>
+                                            <input type="text" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300" id="bankName">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="block font-semibold mb-2 text-gray-700 dark:text-gray-300">Account Number</label>
+                                            <input type="text" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300" id="accountNumber">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="block font-semibold mb-2 text-gray-700 dark:text-gray-300">SWIFT/BIC Code</label>
+                                            <input type="text" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300" id="swiftCode">
+                                        </div>
+                                    </div>
+                
+                                    <!-- PayPal Details Section -->
+                                    <div id="paypalDetails" class="hidden bg-gray-50 dark:bg-slate-800 rounded-lg p-4 transform transition-all duration-300">
+                                        <div class="mb-3">
+                                            <label class="block font-semibold mb-2 text-gray-700 dark:text-gray-300">PayPal Email</label>
+                                            <input type="email" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300" id="paypalEmail">
+                                        </div>
+                                    </div>
+                
+                                    <!-- Crypto Details Section -->
+                                    <div id="cryptoDetails" class="hidden bg-gray-50 dark:bg-slate-800 rounded-lg p-4 space-y-4 transform transition-all duration-300">
+                                        <div class="mb-3">
+                                            <label class="block font-semibold mb-2 text-gray-700 dark:text-gray-300">Cryptocurrency Type</label>
+                                            <select class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300" id="cryptoType">
+                                                <option value="btc">Bitcoin (BTC)</option>
+                                                <option value="eth">Ethereum (ETH)</option>
+                                                <option value="usdt">Tether (USDT)</option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="block font-semibold mb-2 text-gray-700 dark:text-gray-300">Wallet Address</label>
+                                            <input type="text" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300" id="walletAddress">
+                                        </div>
+                                    </div>
+                
+                                    <!-- Withdrawal Limits -->
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+                                        <div>
+                                            <label class="block font-semibold mb-2 text-gray-700 dark:text-gray-300">Minimum Withdrawal Amount</label>
+                                            <div class="flex">
+                                                <span class="inline-flex items-center px-4 border border-r-0 rounded-l-lg bg-gray-50 dark:bg-slate-800 text-gray-700 dark:text-gray-300">$</span>
+                                                <input type="number" class="w-full p-3 border rounded-r-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300" id="minWithdrawal" value="50" readonly>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <label class="block font-semibold mb-2 text-gray-700 dark:text-gray-300">Maximum Withdrawal Amount</label>
+                                            <div class="flex">
+                                                <span class="inline-flex items-center px-4 border border-r-0 rounded-l-lg bg-gray-50 dark:bg-slate-800 text-gray-700 dark:text-gray-300">$</span>
+                                                <input type="number" class="w-full p-3 border rounded-r-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300" id="maxWithdrawal" value="10000" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                
+                                    <!-- Security Settings -->
+                                    <div class="mb-6 mt-6">
+                                        <div class="flex items-center">
+                                            <input class="w-5 h-5 mr-3 text-blue-600 focus:ring-blue-500 rounded transition-all duration-300" type="checkbox" id="twoFactorAuth" role="switch">
+                                            <label class="font-semibold text-gray-700 dark:text-gray-300" for="twoFactorAuth">
+                                                Enable 2FA for withdrawals
+                                            </label>
+                                        </div>
+                                    </div>
+                
+                                    <button type="submit" class="w-full bg-blue-600 text-white py-4 rounded-lg hover:bg-blue-700 transform hover:scale-[1.02] transition-all duration-300 font-semibold text-lg shadow-lg hover:shadow-xl">Save Settings</button>
+                                </form>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <label class="form-label fw-semibold">Maximum Withdrawal Amount</label>
-                            <div class="input-group">
-                                <span class="input-group-text">$</span>
-                                <input type="number" class="form-control form-control-lg" id="maxWithdrawal" value="10000" readonly>
-                            </div>
-                        </div>
                     </div>
-
-                    <!-- Security Settings -->
-                    <div class="mb-4 mt-4">
-                        <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" id="twoFactorAuth" role="switch">
-                            <label class="form-check-label fw-semibold" for="twoFactorAuth">
-                                Enable 2FA for withdrawals
-                            </label>
-                        </div>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary btn-lg w-100">Save Settings</button>
-                </form>
-            </div>
+                </div><!--end container-->
+                <!-- Footer Start -->
+                <footer class="shadow dark:shadow-gray-700 bg-white dark:bg-slate-900 px-6 py-4">
+                    <div class="container-fluid">
+                        <div class="grid grid-cols-1">
+                            <div class="sm:text-start text-center mx-md-2">
+                                <p class="mb-0 text-slate-400">© <script>document.write(new Date().getFullYear())</script> PayHive Solutions LLC | All Rights Reserved.</p>
+                            </div><!--end col-->
+                        </div><!--end grid-->
+                    </div><!--end container-->
+                </footer><!--end footer-->
+                <!-- End -->
+            </main>
+            <!--End page-content" -->
         </div>
-    </div>
+        <!-- page-wrapper -->
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const paymentMethod = document.getElementById('paymentMethod');
-            const paymentDetails = document.querySelectorAll('.payment-details');
-            const withdrawalForm = document.getElementById('withdrawalSettingsForm');
+       
 
-            // Handle payment method change with animation
-            paymentMethod.addEventListener('change', function() {
-                paymentDetails.forEach(detail => {
-                    detail.style.opacity = '0';
-                    detail.style.display = 'none';
-                });
-                
-                const selectedMethod = this.value;
-                if (selectedMethod) {
-                    const selectedDetail = document.getElementById(`${selectedMethod}Details`);
-                    selectedDetail.style.display = 'block';
-                    setTimeout(() => {
-                        selectedDetail.style.opacity = '1';
-                    }, 50);
-                }
-            });
-
-            // Add smooth transitions
-            paymentDetails.forEach(detail => {
-                detail.style.transition = 'opacity 0.3s ease-in-out';
-            });
-
-            // Handle form submission
-            withdrawalForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                const selectedMethod = paymentMethod.value;
-                let withdrawalSettings = {
-                    paymentMethod: selectedMethod,
-                    twoFactorAuth: document.getElementById('twoFactorAuth').checked
-                };
-
-                // Collect method-specific details
-                switch(selectedMethod) {
-                    case 'bank':
-                        withdrawalSettings.bankDetails = {
-                            bankName: document.getElementById('bankName').value,
-                            accountNumber: document.getElementById('accountNumber').value,
-                            swiftCode: document.getElementById('swiftCode').value
-                        };
-                        break;
-                    case 'paypal':
-                        withdrawalSettings.paypalDetails = {
-                            email: document.getElementById('paypalEmail').value
-                        };
-                        break;
-                    case 'crypto':
-                        withdrawalSettings.cryptoDetails = {
-                            cryptoType: document.getElementById('cryptoType').value,
-                            walletAddress: document.getElementById('walletAddress').value
-                        };
-                        break;
-                }
-
-                // Save settings to backend (mock API call)
-                console.log('Saving withdrawal settings:', withdrawalSettings);
-                alert('Withdrawal settings saved successfully!');
-            });
-        });
-    </script>
-</body>
+        <!-- JAVASCRIPTS -->
+        <script src="./withdrawSettings.js"></script>
+        <script src="assets/libs/apexcharts/apexcharts.min.js"></script>
+        <script src="assets/js/apexchart.init.js"></script>
+        <script src="assets/libs/jsvectormap/js/jsvectormap.min.js"></script>
+        <script src="assets/libs/jsvectormap/maps/world.js"></script>
+        <script src="assets/js/jsvectormap.init.js"></script>
+        <script src="assets/libs/feather-icons/feather.min.js"></script>
+        <script src="assets/libs/simplebar/simplebar.min.js"></script>
+        <script src="assets/js/plugins.init.js"></script>
+        <script src="assets/js/app.js"></script>
+        <!-- JAVASCRIPTS -->
+    </body>
 </html>

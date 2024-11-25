@@ -1,52 +1,207 @@
-
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deposit</title>
-    <link rel="stylesheet" href="assets/css/tailwind.css">
-</head>
-<body class="bg-gray-100 min-h-screen py-12 px-4">
-    <div class="max-w-md mx-auto">
-        <div class="bg-white rounded-lg shadow-lg p-8">
-            <h2 class="text-3xl font-bold text-center mb-8 text-indigo-600">Make a Deposit</h2>
-            <form id="depositForm" class="space-y-6">
-                <div class="space-y-2">
-                    <label for="amount" class="block text-sm font-semibold text-gray-700">Amount</label>
-                    <input type="number" 
-                           class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors" 
-                           id="amount" 
-                           min="0.01" 
-                           step="0.01" 
-                           required>
-                </div>
-                <div class="space-y-2">
-                    <label for="depositMethod" class="block text-sm font-semibold text-gray-700">Deposit Method</label>
-                    <select class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors" 
-                            id="depositMethod" 
-                            required>
-                        <option value="">Select a method</option>
-                        <option value="bank">Bank Transfer</option>
-                        <option value="card">Credit/Debit Card</option>
-                        <option value="crypto">Cryptocurrency</option>
-                    </select>
-                </div>
-                <button type="submit" 
-                        class="w-full bg-indigo-600 text-white py-3 px-4 rounded-md hover:bg-indigo-700 transition-colors duration-200 font-medium">
-                    Deposit
-                </button>
-            </form>
-            <div class="mt-6">
-                <a href="./index.html" 
-                   class="block w-full text-center bg-gray-200 text-gray-700 py-3 px-4 rounded-md hover:bg-gray-300 transition-colors duration-200 font-medium">
-                    Back to Dashboard
-                </a>
-            </div>
-        </div>
-    </div>
+<html lang="en" class="light scroll-smooth" dir="ltr">
+    <head>
+        <meta charset="UTF-8">
+        <title>Deposit</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="Cross-Border Payments Solution">
+        <meta name="keywords" content="payhive, cross-border payments, multicurrency wallets, financial inclusion, money transfer, send money, receive money">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <script src="https://js.stripe.com/v3/"></script>
-    <script src="./deposit.js"></script>
-</body>
+        <!-- favicon -->
+        <link rel="shortcut icon" href="assets/images/favicon.ico">
+
+        <!-- Css -->
+        <link href="assets/libs/jsvectormap/css/jsvectormap.min.css" rel="stylesheet">
+        <!-- Main Css -->
+        <link href="assets/libs/simplebar/simplebar.min.css" rel="stylesheet">
+        <link href="assets/libs/@iconscout/unicons/css/line.css" type="text/css" rel="stylesheet">
+        <link href="assets/libs/@mdi/font/css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="assets/css/tailwind.css">
+
+    </head>
+    
+    <body class="font-nunito text-base text-black dark:text-white dark:bg-slate-900">
+       
+        <div class="page-wrapper toggled">
+            <!-- sidebar-wrapper -->
+            <nav id="sidebar" class="sidebar-wrapper transition-all duration-300">
+                <div class="sidebar-content">
+                    <div class="sidebar-brand hover:opacity-90 transition-opacity">
+                        <a href="index.html" class="flex items-center">
+                            <img src="assets/images/logo-dark.png" height="24" class="block dark:hidden" alt="">
+                            <img src="assets/images/logo-light.png" height="24" class="hidden dark:block" alt="">
+                        </a>
+                    </div>
+        
+                    <ul class="sidebar-menu border-t dark:border-white/10 border-gray-100" data-simplebar style="height: calc(100% - 70px);">
+                        <li class=""><h6 class="text-sm font-semibold uppercase tracking-wider">Overview</h6></li>
+                        <li class="hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors rounded-lg">
+                            <a href="./index.html" class="flex items-center p-2"><i class="uil uil-home me-2"></i>Home</a>
+                        </li>
+                        <li class="hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors rounded-lg">
+                            <a href="./card.html" class="flex items-center p-2"><i class="uil uil-card-atm me-2"></i>Cards</a>
+                        </li>
+                        <li class="hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors rounded-lg">
+                            <a href="./wallet.html" class="flex items-center p-2"><i class="uil uil-wallet me-2"></i>Wallets</a>
+                        </li>
+
+                        <li class=""><h6 class="text-sm font-semibold uppercase tracking-wider mt-6">Transactions</h6></li>
+                        <li class="hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors rounded-lg">
+                            <a href="./deposit.html" class="flex items-center p-2"><i class="uil uil-money-withdraw me-2"></i>Deposit Funds</a>
+                        </li>
+                        <li class="hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors rounded-lg">
+                            <a href="./send.html" class="flex items-center p-2"><i class="uil uil-telegram-alt me-2"></i>Send Funds</a>
+                        </li>
+                        <li class="hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors rounded-lg">
+                            <a href="./exchange.html" class="flex items-center p-2"><i class="uil uil-sync me-2"></i>Exchange Funds</a>
+                        </li>
+                        <li class="hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors rounded-lg">
+                            <a href="./withdraw.html" class="flex items-center p-2"><i class="uil uil-money-insert me-2"></i>Withdraw Funds</a>
+                        </li>
+                        <li class="hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors rounded-lg">
+                            <a href="./request.html" class="flex items-center p-2"><i class="uil uil-question-circle me-2"></i>Request Funds</a>
+                        </li>
+                        <li class="hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors rounded-lg">
+                            <a href="./transactions.html" class="flex items-center p-2"><i class="uil uil-receipt-alt me-2"></i>Transaction History</a>
+                        </li>
+
+                        <li class=""><h6 class="text-sm font-semibold uppercase tracking-wider mt-6">Support</h6></li>
+                        <li class="hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors rounded-lg">
+                            <a href="./tickets.html" class="flex items-center p-2"><i class="uil uil-ticket me-2"></i>Tickets</a>
+                        </li>
+                        <li class="hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors rounded-lg">
+                            <a href="./notifications.html" class="flex items-center p-2"><i class="uil uil-bell me-2"></i>Notifications</a>
+                        </li>
+
+                        <li class=""><h6 class="text-sm font-semibold uppercase tracking-wider mt-6">Account</h6></li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0)" class="flex items-center p-2 hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors rounded-lg"><i class="uil uil-cog me-2"></i>Preferences</a>
+                            <div class="sidebar-submenu">
+                                <ul class="space-y-1 p-2">
+                                    <li><a href="./withdrawal-settings.html" class="block p-2 hover:bg-gray-50 dark:hover:bg-slate-800 rounded-lg transition-colors">Withdrawal Settings</a></li>
+                                    <li><a href="./profile-settings.html" class="block p-2 hover:bg-gray-50 dark:hover:bg-slate-800 rounded-lg transition-colors">Profile Settings</a></li>
+                                    <li><a href="./security.html" class="block p-2 hover:bg-gray-50 dark:hover:bg-slate-800 rounded-lg transition-colors">Security Center</a></li>
+                                    <li><a href="#" class="block p-2 hover:bg-gray-50 dark:hover:bg-slate-800 rounded-lg transition-colors">API Keys & Webhook</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors rounded-lg">
+                            <a href="./compliance.html" class="flex items-center p-2"><i class="uil uil-user-check me-2"></i>Compliance</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <main class="page-content bg-gray-50 dark:bg-slate-800">
+                <div class="top-header sticky top-0 z-50 bg-white dark:bg-slate-900 shadow-sm">
+                    <div class="header-bar flex justify-between items-center p-4">
+                        <div class="flex items-center space-x-1">
+                            <a href="#" class="xl:hidden block">
+                                <img src="assets/images/logo-icon-32.png" class="md:hidden block h-8" alt="">
+                                <img src="assets/images/logo-dark.png" class="hidden md:block dark:hidden h-8" alt="">
+                                <img src="assets/images/logo-light.png" class="hidden dark:md:block h-8" alt="">
+                            </a>
+                            <button id="close-sidebar" class="btn-icon">
+                                <i data-feather="menu" class="h-4 w-4"></i>
+                            </button>
+                        </div>
+
+                        <ul class="flex items-center space-x-4">
+                            <li class="dropdown relative">
+                                <button onclick="toggleDropdown(this)" class="btn-icon">
+                                    <i data-feather="bell" class="h-4 w-4"></i>
+                                    <span class="notification-badge"></span>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <!-- Notification content -->
+                                </div>
+                            </li>
+                            <li class="dropdown relative">
+                                <button onclick="toggleDropdown(this)" class="flex items-center space-x-2 focus:outline-none">
+                                    <img src="assets/images/client/01.jpg" class="h-8 w-8 rounded-full" alt="">
+                                    <span class="font-semibold hidden sm:block">John Doe</span>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <!-- Profile dropdown content -->
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="container-fluid relative px-3 py-8">
+                    <div class="max-w-md mx-auto py-10 px-4 sm:px-6 lg:px-8">
+                        <div class="bg-white dark:bg-slate-900 rounded-xl shadow-lg p-8 transform transition-all hover:scale-[1.02]">
+                            <h2 class="text-3xl font-bold text-center mb-8 text-indigo-600 dark:text-indigo-400">Make a Deposit</h2>
+                            <form id="depositForm" class="space-y-6">
+                                <div class="space-y-2">
+                                    <label for="amount" class="block text-sm font-semibold text-gray-700 dark:text-gray-300">Amount</label>
+                                    <input type="number" 
+                                           class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 dark:bg-slate-800 dark:text-white transition-colors" 
+                                           id="amount" 
+                                           min="0.01" 
+                                           step="0.01" 
+                                           required>
+                                </div>
+                                <div class="space-y-2">
+                                    <label for="depositMethod" class="block text-sm font-semibold text-gray-700 dark:text-gray-300">Deposit Method</label>
+                                    <select class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 dark:bg-slate-800 dark:text-white transition-colors" 
+                                            id="depositMethod" 
+                                            required>
+                                        <option value="">Select a method</option>
+                                        <option value="bank">Bank Transfer</option>
+                                        <option value="card">Credit/Debit Card</option>
+                                        <option value="crypto">Cryptocurrency</option>
+                                    </select>
+                                </div>
+                                <button type="submit" 
+                                        class="w-full bg-indigo-600 text-white py-3 px-4 rounded-lg hover:bg-indigo-700 transform transition-all active:scale-95 font-medium">
+                                    Deposit
+                                </button>
+                            </form>
+                            <div class="mt-6">
+                                <a href="./index.html" 
+                                   class="block w-full text-center bg-gray-200 dark:bg-slate-700 text-gray-700 dark:text-gray-200 py-3 px-4 rounded-lg hover:bg-gray-300 dark:hover:bg-slate-600 transform transition-all active:scale-95 font-medium">
+                                    Back to Dashboard
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <footer class="shadow dark:shadow-gray-700 bg-white dark:bg-slate-900 px-6 py-4 mt-auto">
+                    <div class="container-fluid">
+                        <div class="text-center sm:text-start">
+                            <p class="mb-0 text-slate-400">© <script>document.write(new Date().getFullYear())</script> PayHive Solutions LLC | All Rights Reserved.</p>
+                        </div>
+                    </div>
+                </footer>
+            </main>
+        </div>
+
+        <div class="fixed top-[30%] -end-3 z-50">
+            <span class="relative inline-block rotate-90">
+                <input type="checkbox" class="checkbox opacity-0 absolute" id="chk" />
+                <label class="label bg-slate-900 dark:bg-white shadow dark:shadow-gray-700 cursor-pointer rounded-full flex justify-between items-center p-1 w-14 h-8" for="chk">
+                    <i class="uil uil-moon text-[20px] text-yellow-500"></i>
+                    <i class="uil uil-sun text-[20px] text-yellow-500"></i>
+                    <span class="ball bg-white dark:bg-slate-900 rounded-full absolute top-[2px] left-[2px] size-7"></span>
+                </label>
+            </span>
+        </div>
+
+        <!-- JAVASCRIPTS -->
+         <script src="./deposit.js"></script>
+        <script src="assets/libs/apexcharts/apexcharts.min.js"></script>
+        <script src="assets/js/apexchart.init.js"></script>
+        <script src="assets/libs/jsvectormap/js/jsvectormap.min.js"></script>
+        <script src="assets/libs/jsvectormap/maps/world.js"></script>
+        <script src="assets/js/jsvectormap.init.js"></script>
+        <script src="assets/libs/feather-icons/feather.min.js"></script>
+        <script src="assets/libs/simplebar/simplebar.min.js"></script>
+        <script src="assets/js/plugins.init.js"></script>
+        <script src="assets/js/app.js"></script>
+        <!-- JAVASCRIPTS -->
+    </body>
 </html>
