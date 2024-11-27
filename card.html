@@ -107,7 +107,6 @@
                                 </span>
                             </a>
                             <!-- Logo -->
-
                             <!-- show or close sidebar -->
                             <button onclick="toggleSidebar()" id="close-sidebar" class="h-8 w-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-[20px] text-center bg-gray-50 dark:bg-slate-800 hover:bg-gray-100 dark:hover:bg-slate-700 border border-gray-100 dark:border-gray-800 text-slate-900 dark:text-white rounded-full visible">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
@@ -188,63 +187,76 @@
                 </div>
 
                 <div class="container-fluid px-3 py-12">
-                    <div class="max-w-2xl mx-auto mt-10 h-screen">
-                        <div class="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1">
-                            <h2 class="text-2xl font-bold text-gray-800 dark:text-white text-center mb-6">Payment Details</h2>
-                            <form id="payment-form" class="space-y-6">
-                                <div class="space-y-4">
-                                    <div>
-                                        <label for="card-number" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                                            Card Number
-                                        </label>
-                                        <input type="text" id="card-number" maxlength="19" placeholder="1234 5678 9012 3456" 
-                                            class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-slate-700 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all">
+                    <div class="max-w-4xl mx-auto mt-10">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- Card 1 -->
+                            <div class="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1 backdrop-blur-sm" data-card-id="1">
+                                <div class="flex flex-col sm:flex-row justify-between items-start mb-4">
+                                    <div class="mb-3 sm:mb-0">
+                                        <h3 class="text-xl font-bold text-gray-800 dark:text-white">VisaCard</h3>
+                                        <p class="card-number text-gray-600 dark:text-gray-300">**** **** **** 4589</p>
+                                        <p class="expiry-date text-gray-600 dark:text-gray-300">Exp: 12/25</p>
                                     </div>
-
-                                    <div class="grid grid-cols-2 gap-4">
-                                        <div>
-                                            <label for="expiry" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                                                Expiry Date
-                                            </label>
-                                            <input type="text" id="expiry" maxlength="5" placeholder="MM/YY"
-                                                class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-slate-700 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all">
-                                        </div>
-
-                                        <div>
-                                            <label for="cvv" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                                                CVV
-                                            </label>
-                                            <input type="text" id="cvv" maxlength="4" placeholder="123"
-                                                class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-slate-700 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all">
-                                        </div>
-                                    </div>
-
-                                    <div>
-                                        <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                                            Cardholder Name
-                                        </label>
-                                        <input type="text" id="name" name="name" required 
-                                            class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-slate-700 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all">
-                                    </div>
-
-                                    <div>
-                                        <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                                            Email
-                                        </label>
-                                        <input type="email" id="email" name="email" required
-                                            class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-slate-700 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all">
+                                    <div class="text-left sm:text-right w-full sm:w-auto">
+                                        <p class="text-sm text-gray-500 dark:text-gray-400">Balance</p>
+                                        <p class="balance text-xl font-bold text-gray-800 dark:text-white">5234.89</p>
                                     </div>
                                 </div>
+                                <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 sm:justify-between mt-4">
+                                    <button class="view-details w-full bg-blue-600 sm:w-auto px-6 py-2.5 bg-gradient-to-r from-blue-500 to-blue-700 text-white rounded-lg hover:from-blue-600 hover:to-blue-800 transition-all duration-300 shadow-md hover:shadow-lg">View Details</button>
+                                    <button class="top-up w-full bg-blue-600 sm:w-auto px-6 py-2.5 bg-gradient-to-r from-green-500 to-green-700 text-white rounded-lg hover:from-green-600 hover:to-green-800 transition-all duration-300 shadow-md hover:shadow-lg">Top Up</button>
+                                </div>
+                            </div>
 
-                                <button type="submit" 
-                                    class="w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-all duration-300 transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
-                                    Submit Payment
-                                </button>
-                            </form>
+                            <!-- Card 2 -->
+                            <div class="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1 backdrop-blur-sm" data-card-id="2">
+                                <div class="flex flex-col sm:flex-row justify-between items-start mb-4">
+                                    <div class="mb-3 sm:mb-0">
+                                        <h3 class="text-xl font-bold text-gray-800 dark:text-white">Mastercard</h3>
+                                        <p class="card-number text-gray-600 dark:text-gray-300">**** **** **** 7823</p>
+                                        <p class="expiry-date text-gray-600 dark:text-gray-300">Exp: 09/24</p>
+                                    </div>
+                                    <div class="text-left sm:text-right w-full sm:w-auto">
+                                        <p class="text-sm text-gray-500 dark:text-gray-400">Balance</p>
+                                        <p class="balance text-xl font-bold text-gray-800 dark:text-white">3157.45</p>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 sm:justify-between mt-4">
+                                    <button class="view-details w-full bg-blue-600 sm:w-auto px-6 py-2.5 bg-gradient-to-r from-blue-500 to-blue-700 text-white rounded-lg hover:from-blue-600 hover:to-blue-800 transition-all duration-300 shadow-md hover:shadow-lg">View Details</button>
+                                    <button class="top-up w-full bg-blue-600 sm:w-auto px-6 py-2.5 bg-gradient-to-r from-green-500 to-green-700 text-white rounded-lg hover:from-green-600 hover:to-green-800 transition-all duration-300 shadow-md hover:shadow-lg">Top Up</button>
+                                </div>
+                            </div>
+
+                            <!-- Transaction History -->
+                            <div class="md:col-span-2 bg-white dark:bg-slate-800 rounded-xl shadow-lg p-6 backdrop-blur-sm">
+                                <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-6">Recent Transactions</h3>
+                                <div class="space-y-4" id="transactions-container">
+                                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center p-4 bg-gray-50 dark:bg-slate-700 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-600 transition-all duration-300">
+                                        <div class="mb-2 sm:mb-0">
+                                            <p class="font-semibold text-gray-800 dark:text-white">Jumia Purchase</p>
+                                            <p class="text-sm text-gray-500 dark:text-gray-400">Oct 15, 2023</p>
+                                        </div>
+                                        <p class="text-red-600 font-semibold text-lg">-N124.95</p>
+                                    </div>
+                                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center p-4 bg-gray-50 dark:bg-slate-700 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-600 transition-all duration-300">
+                                        <div class="mb-2 sm:mb-0">
+                                            <p class="font-semibold text-gray-800 dark:text-white">Wallet Top Up</p>
+                                            <p class="text-sm text-gray-500 dark:text-gray-400">Oct 14, 2023</p>
+                                        </div>
+                                        <p class="text-green-600 font-semibold text-lg">+N500.00</p>
+                                    </div>
+                                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center p-4 bg-gray-50 dark:bg-slate-700 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-600 transition-all duration-300">
+                                        <div class="mb-2 sm:mb-0">
+                                            <p class="font-semibold text-gray-800 dark:text-white">DSTV Subscription</p>
+                                            <p class="text-sm text-gray-500 dark:text-gray-400">Oct 13, 2023</p>
+                                        </div>
+                                        <p class="text-red-600 font-semibold text-lg">-N14.99</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-
                 <footer class="mt-auto shadow dark:shadow-gray-700 bg-white dark:bg-slate-900 px-6 py-4">
                     <div class="container-fluid">
                         <div class="text-center sm:text-start">
@@ -255,13 +267,73 @@
             </main>
         </div>
 
-     
-
         <!-- JAVASCRIPTS -->
+        <style>
+            .modal {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 1000;
+            }
+
+            .modal-content {
+                background-color: #e6eef4;
+                padding: 2rem;
+                border-radius: 0.5rem;
+                max-width: 500px;
+                width: 90%;
+            }
+
+            .input-group {
+                margin: 1rem 0;
+            }
+
+            .input-group label {
+                display: block;
+                margin-bottom: 0.5rem;
+            }
+
+            .input-group input {
+                width: 100%;
+                padding: 0.5rem;
+                border: 1px solid #ccc;
+                border-radius: 0.25rem;
+            }
+
+            .button-group {
+                display: flex;
+                gap: 1rem;
+                margin-top: 1rem;
+            }
+
+            .button-group button {
+                padding: 0.5rem 1rem;
+                border-radius: 0.25rem;
+                cursor: pointer;
+            }
+
+            .button-group button:first-child {
+                background-color: #4F46E5;
+                color: white;
+            }
+
+            .button-group button:last-child {
+                background-color: #EF4444;
+                color: white;
+            }
+        </style>
+         
+         
         <script>
             function toggleSidebar() {
                 const sidebar = document.getElementById('sidebar');
-                const pageWrapper = document.querySelector('.page-wrapper');
+                const pageWrapper = document.querySelector('#close-sidebar');
                 
                 // Toggle sidebar visibility
                 sidebar.classList.toggle('-translate-x-full');
@@ -284,8 +356,6 @@
             window.addEventListener('resize', () => {
                 const sidebar = document.getElementById('sidebar');
                 const pageWrapper = document.querySelector('.page-wrapper');
-                
-               
             });
         </script>
         <script src="https://js.stripe.com/v3/"></script>

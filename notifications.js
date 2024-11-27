@@ -1,4 +1,5 @@
-    document.addEventListener('DOMContentLoaded', function() {
+
+        document.addEventListener('DOMContentLoaded', function() {
             loadNotifications();
         });
 
@@ -12,14 +13,16 @@
                     type: 'info',
                     message: 'Welcome to your notifications!',
                     timestamp: new Date().toISOString(),
-                    read: false
+                    read: false,
+                    details: 'A new transaction has been made on your account.'
                 },
                 {
                     id: 2,
                     type: 'alert',
                     message: 'New message received',
                     timestamp: new Date().toISOString(),
-                    read: false
+                    read: false,
+                    details: 'You have received a new message from John Doe.'
                 }
             ];
 
@@ -34,7 +37,7 @@
             div.className = `col-12 col-md-8 col-lg-6 mb-3`;
             
             const card = document.createElement('div');
-            card.className = `card ${notification.read ? 'bg-light' : 'border-primary'}`;
+            card.className = `card ${notification.read ? 'bg-light' : 'border-primary'} cursor-pointer`;
             card.setAttribute('data-notification-id', notification.id);
             
             const cardBody = document.createElement('div');
@@ -51,16 +54,31 @@
             const actions = document.createElement('div');
             actions.className = 'd-flex justify-content-end gap-2';
             
+            const viewDetailsBtn = document.createElement('button');
+            viewDetailsBtn.className = 'btn btn-sm btn-outline-info';
+            viewDetailsBtn.textContent = 'View Details';
+            viewDetailsBtn.onclick = (e) => {
+                e.stopPropagation();
+                showNotificationDetails(notification);
+            };
+
             const markReadBtn = document.createElement('button');
             markReadBtn.className = `btn btn-sm ${notification.read ? 'btn-outline-secondary' : 'btn-outline-primary'}`;
             markReadBtn.textContent = notification.read ? 'Mark as unread' : 'Mark as read';
-            markReadBtn.onclick = () => toggleReadStatus(notification.id);
+            markReadBtn.onclick = (e) => {
+                e.stopPropagation();
+                toggleReadStatus(notification.id);
+            };
 
             const deleteBtn = document.createElement('button');
             deleteBtn.className = 'btn btn-sm btn-outline-danger';
             deleteBtn.textContent = 'Delete';
-            deleteBtn.onclick = () => deleteNotification(notification.id);
+            deleteBtn.onclick = (e) => {
+                e.stopPropagation();
+                deleteNotification(notification.id);
+            };
 
+            actions.appendChild(viewDetailsBtn);
             actions.appendChild(markReadBtn);
             actions.appendChild(deleteBtn);
 
@@ -69,7 +87,22 @@
             card.appendChild(cardBody);
             div.appendChild(card);
 
+            // Add click event to the entire card
+            card.addEventListener('click', () => showNotificationDetails(notification));
+
             return div;
+        }
+
+        function showNotificationDetails(notification) {
+            const modalBody = document.getElementById('notificationModalBody');
+            modalBody.innerHTML = `
+                <h6 class="text-${notification.read ? 'secondary' : 'primary'}">${notification.type.toUpperCase()}</h6>
+                <p>${notification.message}</p>
+                <p class="text-muted">${notification.details}</p>
+                <small class="text-muted">Received: ${new Date(notification.timestamp).toLocaleString()}</small>
+            `;
+            const modal = new bootstrap.Modal(document.getElementById('notificationModal'));
+            modal.show();
         }
 
         function toggleReadStatus(notificationId) {
@@ -81,7 +114,7 @@
                 const title = notification.querySelector('.card-title');
                 title.classList.toggle('text-secondary');
                 title.classList.toggle('text-primary');
-                const markReadBtn = notification.querySelector('.btn-sm');
+                const markReadBtn = notification.querySelector('.btn-outline-primary, .btn-outline-secondary');
                 markReadBtn.classList.toggle('btn-outline-secondary');
                 markReadBtn.classList.toggle('btn-outline-primary');
                 markReadBtn.textContent = isRead ? 'Mark as read' : 'Mark as unread';

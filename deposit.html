@@ -152,9 +152,37 @@
                                         <option value="">Select a method</option>
                                         <option value="bank">Bank Transfer</option>
                                         <option value="card">Credit/Debit Card</option>
-                                        <option value="crypto">Cryptocurrency</option>
                                     </select>
                                 </div>
+
+                                <div id="bankDetails" class="space-y-2 hidden">
+                                    <div class="p-4 bg-gray-50 dark:bg-slate-800 rounded-lg">
+                                        <h3 class="font-semibold mb-2">Bank Account Details</h3>
+                                        <p>Bank: Bank Name</p>
+                                        <p>Account Name: PayHive Solutions LLC</p>
+                                        <p>Account Number: XXXX-XXXX-XXXX</p>
+                                        <p>Sort Code: XX-XX-XX</p>
+                                        <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">Please use your name as reference</p>
+                                    </div>
+                                </div>
+
+                                <div id="cardDetails" class="space-y-2 hidden">
+                                    <div class="space-y-2">
+                                        <label for="cardNumber" class="block text-sm font-semibold text-gray-700 dark:text-gray-300">Card Number</label>
+                                        <input type="text" id="cardNumber" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 dark:bg-slate-800 dark:text-white transition-colors" placeholder="XXXX XXXX XXXX XXXX" required>
+                                    </div>
+                                    <div class="grid grid-cols-2 gap-4">
+                                        <div>
+                                            <label for="expiry" class="block text-sm font-semibold text-gray-700 dark:text-gray-300">Expiry Date</label>
+                                            <input type="text" id="expiry" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 dark:bg-slate-800 dark:text-white transition-colors" placeholder="MM/YY" required>
+                                        </div>
+                                        <div>
+                                            <label for="cvv" class="block text-sm font-semibold text-gray-700 dark:text-gray-300">CVV</label>
+                                            <input type="text" id="cvv" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 dark:bg-slate-800 dark:text-white transition-colors" placeholder="XXX" required>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <button type="submit" 
                                         class="w-full bg-indigo-600 text-white py-3 px-4 rounded-lg hover:bg-indigo-700 transform transition-all active:scale-95 font-medium">
                                     Deposit
