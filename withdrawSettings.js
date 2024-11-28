@@ -49,12 +49,6 @@
                         email: document.getElementById('paypalEmail').value
                     };
                     break;
-                case 'crypto':
-                    withdrawalSettings.cryptoDetails = {
-                        cryptoType: document.getElementById('cryptoType').value,
-                        walletAddress: document.getElementById('walletAddress').value
-                    };
-                    break;
             }
 
             // Save settings to backend (mock API call)
